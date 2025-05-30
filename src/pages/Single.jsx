@@ -25,33 +25,49 @@ export const Single = props => {
 
   }, [idElement, typeElement]);
 
-  if (!element) return <div className="text-center">Cargando...</div>;
+  if (!element) return <div className="text-center text-gray">Cargando...</div>;
 
   return (
-    <div className="container text-center">
+    <div className="container text-center mt-3">
       {/* Display the title of the todo element dynamically retrieved from the store using theId. */}
-      <h1>vista de datalle</h1>
-      <div className="card mb-3" style={{ maxWidth: "540px;" }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img src="..." className="img-fluid rounded-start" alt="..."/>
+       <div className="d-grid" style={{ gridTemplateRows: "1fr 1fr", display: "grid" }}>
+        {/* Primera fila: dos columnas */}
+        <div className="row bg-dark mb-3" style={ {height: "100%" }}>
+          <div className="col-md-6 d-flex justify-content-center align-items-center" style={{ borderRight: "1px solid #ccc" }}>
+            <img
+              src={`https://lumiere-a.akamaihd.net/v1/images/anakin-skywalker-main_23e5105b.jpeg?region=387%2C27%2C1350%2C760`}
+              className="img-fluid rounded"
+              alt={element.name}
+              style={{ objectFit: "cover" }}
+              onError={e => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"; }}
+            />
           </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">{element.name || "Card title"}</h5>
-                        <p className="card-text">{element.description || "Descripción no disponible."}</p>
-              <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
-            </div>
+          <div className="col-md-6 d-flex flex-column text-start text-white">
+            <h5 className="card-title mt-2">{element.name || "Card title"}</h5>
+            <p className="card-text mt-3">{element.description || "Descripción no disponible."}</p>
+            <p className="card-text"><small className="text-white">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        {/* Segunda fila: cuatro columnas */}
+        <div className="row" style={{ height: "100%"}} >
+          <div className="col-md-3 text-white mt-5" style={{ borderRight: "1px solid #ccc" }}>
+            <strong>Propiedad 1:</strong>
+            <div>{element.height || element.population || "N/A"}</div>
+          </div>
+          <div className="col-md-3 text-white mt-5" style={{ borderRight: "1px solid #ccc" }}>
+            <strong>Propiedad 2:</strong>
+            <div>{element.mass || element.climate || "N/A"}</div>
+          </div>
+          <div className="col-md-3 text-white mt-5" style={{ borderRight: "1px solid #ccc" }}>
+            <strong>Propiedad 3:</strong>
+            <div>{element.gender || element.terrain || "N/A"}</div>
+          </div>
+          <div className="col-md-3 text-white mt-5">
+            <strong>Propiedad 4:</strong>
+            <div>{element.birth_year || element.diameter || "N/A"}</div>
           </div>
         </div>
       </div>
-
-      {/* A Link component acts as an anchor tag but is used for client-side routing to prevent page reloads. */}
-      <Link to="/">
-        <span className="btn btn-primary btn-lg" href="#" role="button">
-          Back home
-        </span>
-      </Link>
     </div>
   );
 };

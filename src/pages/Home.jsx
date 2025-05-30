@@ -29,44 +29,61 @@ export const Home = () => {
 		<>
 			<div className=" m-5">
 				<div>
-					<h5>List of People</h5>
+					<h5 style={{ color: "white"}}>List of People</h5>
 				</div>
 				<div>
-					<ul className="d-flex">
-						{
-							store.people.map((people) => (
-								<li key={people.uid}>
-									<CardElement name={people.name} uid={people.uid} type="people" />
-								</li>
-							))
-						}
+					<ul
+						className="d-flex flex-row overflow-auto"
+						style={{
+							listStyle: "none",
+							padding: 0,
+							gap: "1rem",
+							scrollSnapType: "x mandatory",
+							WebkitOverflowScrolling: "touch",
+						}}
+					>
+						{store.people.map((people) => (
+							<li key={people.uid} style={{ scrollSnapAlign: "start"}}>
+								<CardElement name={people.name} uid={people.uid} type="people" />
+							</li>
+						))}
 					</ul>
 				</div>
 				<div>
-					<h5>List of Planets</h5>
+					<h5 style={{ color: "white"}}>List of Planets</h5>
 					<div>
-						<ul className="d-flex">
-							{
-								store.planets.map((planets) => (
-									<li key={planets.uid}>
-										<CardElement name={planets.name} uid={planets.uid} type="planets" />
-									</li>
-								))
-							}
+						<ul
+							className="d-flex flex-row overflow-auto"
+							style={{
+								listStyle: "none",
+								padding: 0,
+								gap: "1rem",
+								scrollSnapType: "x mandatory",
+								WebkitOverflowScrolling: "touch",
+							}}
+						>
+							{store.planets.map((planet) => (
+								<li key={planet.uid} style={{ scrollSnapAlign: "start" }}>
+									<CardElement name={planet.name} uid={planet.uid} type="planets" />
+								</li>
+							))}
 						</ul>
-					</div>
-				</div>
-				<div>
-					<h5>List of Vehicles</h5>
-					<div>
-						<ul className="d-flex">
-							{
-								store.vehicles.map((vehicles) => (
-									<li key={vehicles.uid}>
-										<CardElement name={vehicles.name} uid={vehicles.uid} type="vehicles" />
-									</li>
-								))
-							}
+
+						<ul
+							className="d-flex flex-row overflow-auto"
+							style={{
+								listStyle: "none",
+								padding: 0,
+								gap: "1rem",
+								scrollSnapType: "x mandatory",
+								WebkitOverflowScrolling: "touch",
+							}}
+						>
+							{store.vehicles.map((vehicle) => (
+								<li key={vehicle.uid} style={{ scrollSnapAlign: "start" }}>
+									<CardElement name={vehicle.name} uid={vehicle.uid} type="vehicles" />
+								</li>
+							))}
 						</ul>
 					</div>
 				</div>
